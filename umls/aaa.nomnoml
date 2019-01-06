@@ -5,3 +5,6 @@
 [<instance>ccc]
 [<instance>ddd]
 [ccc]--[ddd]
+
+[top]->[aaa]
+[top]->[ccc]
