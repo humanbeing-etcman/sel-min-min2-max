@@ -1,3 +1,5 @@
+#direction: right
+
 [<instance>aaa]
 [<instance>bbb]
 [aaa]--[bbb]
