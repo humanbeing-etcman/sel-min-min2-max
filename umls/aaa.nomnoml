@@ -1,0 +1,12 @@
+#direction: right
+
+[<instance>aaa]
+[<instance>bbb]
+[aaa]--[bbb]
+
+[<instance>ccc]
+[<instance>ddd]
+[ccc]--[ddd]
+
+[top]->[aaa]
+[top]->[ccc]
