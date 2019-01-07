@@ -1,0 +1,44 @@
+title 20190104-2044 : making Mixed3x3M
+participant main
+participant mixed3x3M
+participant ccc
+
+note over main
+    P322 method apply
+    R6-dic / vol.3
+    p.34A
+end note
+
+main->mixed3x3M : init()
+activate main
+activate mixed3x3M
+
+note over mixed3x3M
+    init() : no idea?
+end note
+
+main->mixed3x3M : generate()
+
+note over mixed3x3M
+    min
+    min2
+    max
+    !min
+    !min2
+end note
+
+mixed3x3M->main : retrieve()
+
+note over mixed3x3M
+    something...
+end note
+
+main->mixed3x3M : terminate()
+deactivate mixed3x3M
+deactivate main
+
+note over main
+    TODO)[?]in Mixed3x3M is
+    filled by someone.
+    ->now) as is [?]
+end note
