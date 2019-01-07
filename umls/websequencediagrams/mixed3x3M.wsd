@@ -1,12 +1,52 @@
 title 20190104-2044 : making Mixed3x3M
 participant main
 participant mixed3x3M
-participant ccc
+participant Min
+participant Min2
+participant Max
+participant NotMin
+participant NotMin2
+participant NotMax
 
 note over main
     P322 method apply
     R6-dic / vol.3
     p.34A
+end note
+
+note over Min,Min2,Max,NotMin,NotMin2
+    used:(!rev,!rev->rev)
+    !used:(rev)
+    DB(1-146,170)
+end note
+
+note over Min
+    no.(149,155,184)
+    p.29A
+end note
+
+note over Min2
+    no.(50,118,173)
+    p.30A
+end note
+
+note over Max
+    no.(150,158,161)
+    p.31A
+end note
+
+note over NotMin
+    no.(109=97,159,187)
+    p.32A,=!min
+end note
+
+note over NotMin2
+    no.(151,180,186)
+    p.33A,=!min2
+end note
+
+note over NotMax
+    no.(none),=!max
 end note
 
 main->mixed3x3M : init()
