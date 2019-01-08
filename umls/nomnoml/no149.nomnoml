@@ -1,0 +1,36 @@
+[<instance>\110010yen|20181208,1/n]
+[<none>note1|To check rule of (rev) by (!rev)'s one.]
+[<instance>no.149|Min]
+[<instance>no.149,!rev]
+[<instance>no.149,!rev->rev]
+[<instance>no.149,!rev,org|major(!?=?)=A1|@minor=none@]
+[<instance>no.149,!rev,org,sum(o)|(A1)|min=1|min2=1|max=0]
+
+[<instance>no.149,!rev,10%|@none@]
+[<instance>no.149,!rev,>10%,<10%handling|
+order(1)=avg(0.30,0.449)=0.379,(a5,max)
+|order(2)=avg(0.351,0.541)=0.446,(a6,max)
+|order(3)=avg()=|]
+
+[<instance>no.149,!rev->rev,org|major(!?=?)=A2|@minor=none@]
+[<instance>no.149,!rev->rev,10%|major(!?)=X2,major(?)=Y2|@minor=none@]
+[<instance>no.149,!rev->rev,org,sum(o)|(A2)|min=1|min2=1|max=0]
+[<instance>no.149,!rev->rev,10%,sum(o)|(X2,Y2,X2Y2)|min=(1,2)|min2=(3,2)|max=(1,0)]
+[<instance>no.149,!rev->rev,10%,sum(o),all|min=(2,3)|min2=(4,3)|max=(1,0)|rule.1)sel max(new)=3:(min,min2)
+rule.2)sel min(old)=2=min=OK.|major*1,minor*2]
+
+[note1]->[\110010yen]
+[\110010yen]->[no.149]
+[no.149]->[no.149,!rev]
+[no.149]->[no.149,!rev->rev]
+[no.149,!rev]->[no.149,!rev,org]
+[no.149,!rev,org]->[no.149,!rev,org,sum(o)]
+[no.149,!rev]->[no.149,!rev,10%]
+[no.149,!rev,10%]->[no.149,!rev,>10%,<10%handling]
+
+[no.149,!rev->rev]->[no.149,!rev->rev,org]
+[no.149,!rev->rev]->[no.149,!rev->rev,10%]
+[no.149,!rev->rev,org]->[no.149,!rev->rev,org,sum(o)]
+[no.149,!rev->rev,10%]->[no.149,!rev->rev,10%,sum(o)]
+[no.149,!rev->rev,org,sum(o)]->[no.149,!rev->rev,10%,sum(o),all]
+[no.149,!rev->rev,10%,sum(o)]->[no.149,!rev->rev,10%,sum(o),all]
