@@ -1,4 +1,4 @@
-[<instance>\110010yen|20181208,1/n]
+[<instance>\110010yen|2018/12/08,1/n]
 [<none>note1|To check rule of (rev) by (!rev)'s one.]
 [<instance>no.149|Min]
 [<instance>no.149,!rev]
@@ -7,17 +7,53 @@
 [<instance>no.149,!rev,org,sum(o)|(A1)|min=1|min2=1|max=0]
 
 [<instance>no.149,!rev,10%|@none@]
-[<instance>no.149,!rev,>10%,<10%handling|
-order(1)=avg(0.30,0.449)=0.379,(a5,max)
+[<instance>no.149,!rev,>10%,handling(order)|
+order(1)=avg(0.309,0.449)=0.379,(a5,max)
 |order(2)=avg(0.351,0.541)=0.446,(a6,max)
-|order(3)=avg()=|]
+|order(3)=avg(1.009,0.502)=0.7555,(a4,max)|]
 
 [<instance>no.149,!rev->rev,org|major(!?=?)=A2|@minor=none@]
 [<instance>no.149,!rev->rev,10%|major(!?)=X2,major(?)=Y2|@minor=none@]
 [<instance>no.149,!rev->rev,org,sum(o)|(A2)|min=1|min2=1|max=0]
-[<instance>no.149,!rev->rev,10%,sum(o)|(X2,Y2,X2Y2)|min=(1,2)|min2=(3,2)|max=(1,0)]
-[<instance>no.149,!rev->rev,10%,sum(o),all|min=(2,3)|min2=(4,3)|max=(1,0)|rule.1)sel max(new)=3:(min,min2)
-rule.2)sel min(old)=2=min=OK.|major*1,minor*2]
+
+[<instance>no.149,!rev->rev,10%,sum(o)|(X2,Y2,X2Y2)
+|min=(1,2)|min2=(3,2)|max=(1,0)]
+
+[<instance>no.149,!rev->rev,10%,sum(o),all
+|(org,<10%):{org*1,<10%*2}
+|min=(2,3)|min2=(4,3)|max=(1,0)
+|rule.1)sel max(new)=(3,3,0)=3=(min,min2)
+rule.2)sel min(old)=(2,4)=2=min=OK.]
+
+[<instance>no.149,!rev,>10%,order(1)
+|!touched! in \110010yen
+|major={min(3-1),min2(2-2),max(1-2,1-3)
+@minor=none@}
+|]
+
+[<instance>no.149,!rev,>10%,order(1to2)
+|major(!?)=X2,major(?)=Y2
+|(X2,Y2,X2Y2)
+|(>10%):{major*2,minor*0}
+|min=(1,2)|min2=(3,2)|max=(1,0)
+|rule.1)sel max(new)=(2,2,0)=2=(min,min2)
+rule.2)sel min(old:rule.1)=(1,3)=1=min=OK]
+
+[<instance>no.149,!rev,>10%,order(1to3)
+|major(!?)=X2,major(?)=Y2|minor(!?)=S3,minor(?)=T3]
+[<instance>no.149,!rev,>10%,order(1to3),sum(o)
+|(>10%):(major*2,minor*2)
+|(X2,Y2,S3,T3)
+(XY,XS,XT,YS,YT,ST)
+(XYS,XYT,XST,YST,XYST)
+|min=(7,8)|min2=(9,9)|max=(10,6)
+|rule.1)sel max(new)=(8,9,6)=9=min2:?(NG)
+rule.2)none?
+|rule.1a)max(new)=9=old,!fixed,out of goal,
+rule.2a)sel max2(new)=8=min=OK]
+
+[<instance>no.149,!rev,org,sum(o),all
+|(org):(major*1,minor*0)]
 
 [note1]->[\110010yen]
 [\110010yen]->[no.149]
@@ -26,7 +62,11 @@ rule.2)sel min(old)=2=min=OK.|major*1,minor*2]
 [no.149,!rev]->[no.149,!rev,org]
 [no.149,!rev,org]->[no.149,!rev,org,sum(o)]
 [no.149,!rev]->[no.149,!rev,10%]
-[no.149,!rev,10%]->[no.149,!rev,>10%,<10%handling]
+[no.149,!rev,10%]->[no.149,!rev,>10%,handling(order)]
+[no.149,!rev,>10%,handling(order)]->[no.149,!rev,>10%,order(1)]
+[no.149,!rev,>10%,handling(order)]->[no.149,!rev,>10%,order(1to2)]
+[no.149,!rev,>10%,handling(order)]->[no.149,!rev,>10%,order(1to3)]
+[no.149,!rev,>10%,order(1to3)]->[no.149,!rev,>10%,order(1to3),sum(o)]
 
 [no.149,!rev->rev]->[no.149,!rev->rev,org]
 [no.149,!rev->rev]->[no.149,!rev->rev,10%]
@@ -34,3 +74,6 @@ rule.2)sel min(old)=2=min=OK.|major*1,minor*2]
 [no.149,!rev->rev,10%]->[no.149,!rev->rev,10%,sum(o)]
 [no.149,!rev->rev,org,sum(o)]->[no.149,!rev->rev,10%,sum(o),all]
 [no.149,!rev->rev,10%,sum(o)]->[no.149,!rev->rev,10%,sum(o),all]
+
+[no.149,!rev,10%]->[no.149,!rev,org,sum(o),all]
+[no.149,!rev,org,sum(o)]->[no.149,!rev,org,sum(o),all]
