@@ -1,0 +1,119 @@
+[<instance>no.186,1vs2
+|!Min2,!rev->rev
+|\110160yyy
+|2018/12/15,1/n]
+[<instance>order.cell]
+[no.186,1vs2]--[order.cell]
+
+[<instance>order(1to2)
+|avg=0.193, > 10%
+|a6=(3->2,1,2->1)
+|a1=(2,1,1)
+ a2=(3,1,2)
+ a3=(3,1,2)
+ a4=(3,1,2)
+|a5=(3,1,2)
+ a6=(2,1,1)
+|
+[<instance>order(1to2).major
+|min(3-3)
+ min(3-2)
+|min2(1-1)
+|max(2-2)
+ max(2-1)]
+
+[<instance>order(1to2).minor
+|min(2-3)
+ min(2-2)
+|min2(x)
+|max(1-2)
+ max(1-1)]
+[order(1to2).major]--[order(1to2).minor]
+|
+major(!?),major(?):2
+minor(!?),minor(?):2
+]
+
+[<instance>order(1to3)
+|avg=0.194, >10%
+|a2=(3->2,1,2->1)
+|a1=(2,1,1)
+ a2=(2,1,1)
+ a3=(3,1,2)
+ a4=(3,1,2)
+|a5=(3,1,2)
+ a6=(2,1,1)
+|
+[<instance>order(1to3).major
+|min(2-3)
+ min(2-2)
+ min(3-3)
+ min(3-2)
+|min2(1-1)
+|max(1-2)
+ max(1-1)
+ max(2-2)
+ max(2-1)]
+
+[<instance>order(1to3).minor
+|none.]
+[order(1to3).major]--[order(1to3).minor]
+|
+major(@@@):TODO
+minor*none:0
+]
+
+[<instance>order(1to4)
+|avg=0.212, > 10%
+|a5=(3->2,1,2->1)
+|a1=(2,1,1)
+ a2=(2,1,1)
+ a3=(3,1,2)
+ a4=(3,1,2)
+|a5=(2,1,1)
+ a6=(2,1,1)
+|
+[<instance>order(1to4).major
+|min(2-2)
+ min(3-2)
+|min2(1-1)
+|max(1-1)
+ max(2-1)]
+
+[<instance>order(1to4).minor
+|none.]
+[order(1to4).major]--[order(1to4).minor]
+|
+major(@@@):TODO
+minor*none:0
+]
+
+[<instance>order(1to5)
+|avg=0.329, >10%
+|a3=(3->2,1,2->1)
+|a1=(2,1,1)
+ a2=(2,1,1)
+ a3=(2,1,1)
+ a4=(3,1,2)
+|a5=(2,1,1)
+ a6=(2,1,1)
+|
+[<instance>order(1to5).major
+|min(2-2)
+|min2(1-1)
+|max(1-1)]
+
+[<instance>order(1to5).minor
+|min(3-2)
+|min2(x)
+|max(2-1)]
+[order(1to5).major]--[order(1to5).minor]
+|
+major(!?=?):1
+minor(!?),minor(?):2
+]
+
+[order.cell]--[order(1to2)]
+[order.cell]--[order(1to3)]
+[order.cell]--[order(1to4)]
+[order.cell]--[order(1to5)]
