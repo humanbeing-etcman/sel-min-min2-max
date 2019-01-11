@@ -59,7 +59,7 @@ minor(!?),minor(?):2
 |none.]
 [order(1to3).major]--[order(1to3).minor]
 |
-major(@@@):TODO
+major(!?),major(?):2
 minor*none:0
 ]
 
@@ -84,7 +84,7 @@ minor*none:0
 |none.]
 [order(1to4).major]--[order(1to4).minor]
 |
-major(@@@):TODO
+major(!?),major(?):2
 minor*none:0
 ]
 
