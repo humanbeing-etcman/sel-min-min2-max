@@ -80,7 +80,15 @@ minor*none:0
 ]
 
 [<instance>order(1to3),sum(o)
-|!touched.]
+|a3=major(!?),b3=major(?)
+|(a3,b3,ab)
+|min=(1,1)
+ min2=(1,2)
+ max=(2,0)
+|goal.rule)
+ 1)sel max(new)=2=min2
+ 2)sel same(min2(old)=1)=(min,min2)=!max
+|goal=!max?,expected=!min2. so.NG?]
 
 [<instance>order(1to4)
 |avg=0.212, > 10%
@@ -108,7 +116,14 @@ minor*none:0
 ]
 
 [<instance>order(1to4),sum(o)
-|!touched.]
+|a4=major(!?),b4=major(?)
+|(a4,b4,ab)
+|min=(1),!(old,new)
+ min2=(3),!(old,new)
+ max=(0),!(old,new)
+|goal.rule)
+ 1)!(old,new),so NG
+]
 
 [<instance>order(1to5)
 |avg=0.329, >10%
