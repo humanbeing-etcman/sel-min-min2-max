@@ -1,0 +1,63 @@
+#direction :  right
+[<instance>no.186,top]
+[<instance>no.186,1vs2
+|!Min2,!rev->rev
+|\110160yyy
+|2018/12/15,1/n]
+[<instance>order.cell]
+
+[no.186,top]--[no.186,1vs2]
+[no.186,1vs2]--[order.cell]
+
+[<instance>no.186,org
+|a1=(3,1,2)
+ a2=(3,1,2)
+ a3=(3,1,2)
+ a4=(3,1,2)
+|a5=(3,1,2)
+ a6=(3,1,2)
+|
+[<instance>org.major
+|min(3-3)
+|min2(1-1)
+|max(2-2)]
+
+[<instance>org.minor
+|none.]
+[org.major]--[org.minor]
+|
+major(!?=?):1
+minor:none:0
+]
+
+[<instance>no.186,<10%
+|none.]
+
+[<instance>order(1)
+|a=0.112, >10%
+|a1=(3->2,1,2->1)
+|a1=(2,1,1)
+ a2=(3,1,2)
+ a3=(3,1,2)
+ a4=(3,1,2)
+|a5=(3,1,2)
+ a6=(3,1,2)
+|
+[<instance>order(1).major
+|min(3-3)
+|min2(1-1)
+|max(2-2)]
+
+[<instance>order(1).minor
+|min(2-3)
+|min2(x)
+|max(1-2)]
+[order(1).major]--[order(1).minor]
+|
+major(!?=?):1
+minor(!?),minor(?):2
+]
+
+[order.cell]--[order(1)]
+[no.186,top]--[no.186,org]
+[no.186,org]--[no.186,<10%]
