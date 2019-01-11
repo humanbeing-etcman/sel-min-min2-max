@@ -33,6 +33,18 @@ minor:none:0
 [<instance>no.186,<10%
 |none.]
 
+[<instance>(org,<10%),sum(o)
+|a=major(!?=?)
+|(a)
+|min=(0,1)
+ min2=(1,0)
+ max=(0,0)
+|goal rule) less data : none < 10%
+ 1)sel max(new)=1=min
+ 2)sel same(old=0)=(min,max)=!min2
+|goal=!min2,expected=same, OK?
+]
+
 [<instance>order(1)
 |a=0.112, >10%
 |a1=(3->2,1,2->1)
@@ -58,6 +70,23 @@ major(!?=?):1
 minor(!?),minor(?):2
 ]
 
+[<instance>order(1),sum(o)
+|a=major(!?=?)
+ x=minor(!?),y=minor(?)
+|(a,x,y),(ax,ay,xy)
+|min=(2,3)
+ min2=(4,3)
+ max=(2,1)
+|goal.rule)
+ 1)sel max(new)=(3,3,1)=3=(min,min2)
+ 2)sel target=(min,min2),sel min(old)=2
+ 3)sel same(old=2)=(min,max)=!min2
+|goal=!min2,expected=same,OK]
+
 [order.cell]--[order(1)]
 [no.186,top]--[no.186,org]
 [no.186,org]--[no.186,<10%]
+
+[no.186,org]->[(org,<10%),sum(o)]
+[no.186,<10%]->[(org,<10%),sum(o)]
+[order(1)]->[order(1),sum(o)]
