@@ -34,6 +34,22 @@ major(!?),major(?):2
 minor(!?),minor(?):2
 ]
 
+[<instance>order(1to2),sum(o)
+|a2=major(!?),b2=major(?)
+ s2=minor(!?),t2=minor(?)
+|(a2,b2,s2,t2),
+ (ab,as,at,bs,bt,st),
+ (abs,abt,ast,bst,abst)
+|min=(8,6)=(old,new)
+ min2=(8,10)
+ max=(2,1)
+|goal.rule)
+ 1)sel max(new)=(6,10,1)=10=min2
+ 2)sel same(min2(old)=8)=(min,min2)=!max
+|
+goal=!max?,expected=!min2. so.NG?
+]
+
 [<instance>order(1to3)
 |avg=0.194, >10%
 |a2=(3->2,1,2->1)
@@ -63,6 +79,9 @@ major(!?),major(?):2
 minor*none:0
 ]
 
+[<instance>order(1to3),sum(o)
+|!touched.]
+
 [<instance>order(1to4)
 |avg=0.212, > 10%
 |a5=(3->2,1,2->1)
@@ -87,6 +106,9 @@ minor*none:0
 major(!?),major(?):2
 minor*none:0
 ]
+
+[<instance>order(1to4),sum(o)
+|!touched.]
 
 [<instance>order(1to5)
 |avg=0.329, >10%
@@ -113,7 +135,26 @@ major(!?=?):1
 minor(!?),minor(?):2
 ]
 
+[<instance>order(1to5),sum(o)
+|a5=major(!?=?)
+ s5=minoe(!?),t5=minor(?)
+|(a5,s5,t5),
+ (as,at,st,ast)
+|min=(1,3)
+ min2=(7,5)
+ max=(0,0)
+|goal.rule)
+ 1)sel max(new)=5=min2
+ 2)sel same(min2(old)=7)=min2
+|goal=min2?,expected=!min2, so.NG?
+]
+
 [order.cell]--[order(1to2)]
 [order.cell]--[order(1to3)]
 [order.cell]--[order(1to4)]
 [order.cell]--[order(1to5)]
+
+[order(1to2)]--[order(1to2),sum(o)]
+[order(1to3)]--[order(1to3),sum(o)]
+[order(1to4)]--[order(1to4),sum(o)]
+[order(1to5)]--[order(1to5),sum(o)]
