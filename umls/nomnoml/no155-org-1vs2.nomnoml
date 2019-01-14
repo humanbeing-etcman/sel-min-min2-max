@@ -1,0 +1,120 @@
+#direction : right
+[<instance>no.155.org
+|\110040yyy
+|2018/12/09,3/n
+|Min,!rev->rev
+|
+[<instance>min.raw
+|a1=0.0756
+ a2=0.3276
+ a3=0.056
+ a4=0.288
+ a5=0.2469
+ a6=0.2930
+]
+
+[<instance>min2.raw
+|a1=0.101
+ a2=0.3891
+ a3=0.0705
+ a4=0.3364
+ a5=0.4441
+ a6=0.5501
+]
+
+[<instance>max.raw
+|a1=0.1027
+ a2=0.3695
+ a3=0.0651
+ a4=0.2802
+ a5=0.4033
+ a6=0.4825
+]
+
+[min.raw]--[min2.raw]
+[min2.raw]--[max.raw]
+|
+[<instance>order.init
+|(min,min2,max)
+|a1=(3,2,1)
+ a2=(3,1,2)
+ a3=(3,1,2)
+ a4=(2,1,3)
+|a5=(3,1,2)
+ a6=(3,1,2)
+]
+[<instance>min.raw]
+[<instance>min2.raw]
+[<instance>max.raw]
+
+[min.raw]->[order.init]
+[min2.raw]->[order.init]
+[max.raw]->[order.init]
+
+]
+
+[<instance>no.155.1vs2
+|
+[<instance>min.vs.min2
+|a1=avg(0.335,0.251)=0.293
+ a2=avg(0.187,0.158)=0.173
+ a3=avg(0.258,0.205)=0.232
+ a4=avg(0.168,0.143)=0.156
+ a5=avg(0.798,0.444)=0.621
+ a6=avg(0.877,0.467)=0.672
+]
+
+[<instance>min.vs.max
+|a1=avg(0.358,0.263)=0.311
+ a2=avg(0.127,0.113)=0.120
+ a3=avg(0.162,0.139)=0.151
+ a4=avg(0.027,0.027)=0.027
+ a5=avg(0.633,0.387)=0.510
+ a6=avg(0.646,0.392)=0.519
+]
+
+[<instance>min2.vs.max
+|a1=avg(0.016,0.016)=0.016
+ a2=avg(0.050,0.053)=0.052
+ a3=avg(0.076,0.082)=0.079
+ a4=avg(0.167,0.200)=0.184
+ a5=avg(0.091,0.101)=0.096
+ a6=avg(0.122,0.140)=0.131
+]
+
+[min.vs.min2]--[min.vs.max]
+[min.vs.max]--[min2.vs.max]
+
+|[<instance>order.cell
+|order(1-18)=avg,(a?,1vs2),
+sorted by avg.
+|order(1)=0.016,(a1,min2.vs.max)
+ order(2)=0.027,(a4,min.vs.max)
+ order(3)=0.052,(a2,min2.vs.max)
+ order(4)=0.079,(a3,min2.vs.max)
+ order(5)=0.096,(a5,min2.vs.max)
+ order(6)=0.120,(a2,min.vs.max)
+ order(7)=0.131,(a6,min2.vs.max)
+ order(8)=0.151,(a3,min.vs.max)
+ order(9)=0.156,(a4,min.vs.min2)
+ order(10)=0.173,(a2,min.vs.min2)
+ order(11)=0.184,(a4,min2.vs.max)
+ order(12)=0.232,(a3,min.vs.min2)
+ order(13)=0.293,(a1,min.vs.min2)
+ order(14)=0.311,(a1,min.vs.max)
+ order(15)=0.510,(a5,min.vs.max)
+ order(16)=0.519,(a6,min.vs.max)
+ order(17)=0.621,(a5,min.vs.min2)
+ order(18)=0.672,(a6,min.vs.min2)
+]
+[<instance>min.vs.min2]
+[<instance>min.vs.max]
+[<instance>min2.vs.max]
+
+[min.vs.min2]->[order.cell]
+[min.vs.max]->[order.cell]
+[min2.vs.max]->[order.cell]
+
+]
+
+[no.155.org]--[no.155.1vs2]
