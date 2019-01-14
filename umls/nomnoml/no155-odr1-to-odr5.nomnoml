@@ -96,16 +96,39 @@
  a6=(3,1,2)
 |
 [<instance>order(1to4).major
-|min()
-|min2()
-|max()]
+|min(2-3)
+|min2(1-1)
+|max(1-2)]
 
 [<instance>order(1to4).minor
-|min()
-|min2()
-|max()]
+|min(x)
+|min2(x)
+|max(2-2)]
 [order(1to4).major]--[order(1to4).minor]
+|
+major(!?),major(?):2
+minor(!?=?):1
+]
+
+[<instance>order(1to4).sum(o)
+|@op2
+|x2=major(!?),y2=major(?)
+ z2=minot(!?=?)
+|(x2,y2,z2),(xy,xz,yz,xyz)
+|sum(o):10%:op2
+ min=(1,2)
+ min2=(5,4)
+ max=(2,1)
+|sum(o):10%:op2 + sum(o):org
+ min=(1,2) + (2,5) = (3,7)
+ min2=(5,4) + (5,3) = (10,7)
+ max=(2,1) + (1,0) = (3,1)
+|goal.rule):for sum(o):10%:op2 + sum(o):org
+ 1)
+ 2)
 |]
+[order(1to4)]->[order(1to4).sum(o)]
+[org.sum(o)]->[order(1to4).sum(o)]
 
 [<instance>order(1to5)
 |avg(0.091,0.101)=0.096
@@ -120,16 +143,43 @@
  a6=(3,1,2)
 |
 [<instance>order(1to5).major
-|min()
-|min2()
-|max()]
+|min(2-2)
+ min(2-3)
+|min2(1-1)
+|max(1-1)
+ max(1-2)
+]
 
 [<instance>order(1to5).minor
-|min()
-|min2()
-|max()]
+|min(x)
+|min2(x)
+|max(2-1)
+ max(2-2)]
 [order(1to5).major]--[order(1to5).minor]
+|
+major(!?),major(?):2
+minor(!?=?):1
+]
+
+[<instance>order(1to5).sum(o)
+|@op1
+|x=major(!?),y=major(?)
+ z=minor(!??)
+|(x,y,x),(xy,xz,yz,xyz)
+|sum(0):10%:op1
+ min=(1,3)
+ min2=(6,4)
+ max=(1,0)
+|sum(0):10%:op1 + sum(o):org
+ min=(1,3) + (2,5) = (3,8)
+ min2=(6,4) + (5,3) = (11,7)
+ max=(1,0) + (1,0) = (2,0)
+|goal.rule):for sum(0):10%:op1 + sum(o):org
+ 1)
+ 2)
 |]
+[order(1to5)]->[order(1to5).sum(o)]
+[org.sum(o)]->[order(1to5).sum(o)]
 
 [no.155,1vs2]--[order(1)]
 [no.155,1vs2]--[order(1to2)]
