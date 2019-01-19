@@ -1,0 +1,88 @@
+
+
+#direction: right
+[<instance>top]
+[<note>note1
+|To check rule of (rev) by (!rev)'s one.
+|DB(1-146,170)]
+[top]--[note1]
+
+[<instance>!min2]
+[top]-[!min2]
+
+[<instance>no.151
+|!Min2,(!rev,!rev->rev)
+|!rev:DONE
+ !rev->rev:DONE
+|out DB
+ !included-samePat=existed
+ included-samePat=!existed@
+]
+[<instance>no.151,!rev
+|!included-samePat]
+[<instance>no.151,!rev->rev
+|!included-samePat]
+[!min2]->[no.151]
+[no.151]->[no.151,!rev]
+[no.151]->[no.151,!rev->rev]
+
+[<instance>no.180
+|!Min2,(!rev,!rev->rev)
+|!rev:TODO)@@@
+ !rev->rev:DONE
+|out DB
+ !included-samePat=existed
+ included-samePat=!existed@
+]
+[<instance>no.180,!rev
+|!include-samePat]
+[<instance>no.180,!rev->rev
+|!include-samePat]
+[!min2]->[no.180]
+[no.180]->[no.180,!rev]
+[no.180]->[no.180,!rev->rev]
+
+[<instance>no.186
+|!Min2,(!rev,!rev->rev)
+|!rev:TODO)@@@
+ !rev->rev:DONE
+|out DB
+ !included-samePat=existed
+ included-samePat=!existed@
+]
+[<instance>no.186,!rev
+|!included-samePat]
+[<instance>no.186,!rev->rev
+|!included-samePat]
+[!min2]->[no.186]
+[no.186]->[no.186,!rev]
+[no.186]->[no.186,!rev->rev]
+
+[<instance>\110080yyy,top
+|2018/12/10,4/n]
+[<instance>\110080yyy,bottom,back?
+|2018/12/10,4/n]
+[no.151,!rev->rev]->[\110080yyy,top]
+[no.151,!rev]->[\110080yyy,bottom,back?]
+
+[<instance>\110090yyy
+|2018/12/10,5/n]
+[\110080yyy,top]--[\110090yyy]
+
+[<instance>\110160yyy
+|2018/12/15,1/n]
+[no.186,!rev->rev]->[\110160yyy]
+
+[<instance>\110100yyy
+|2018/12/11,6/n]
+[<instance>\110110yyy
+|2018/12/12,7/n]
+[no.151,!rev->rev]->[\110100yyy]
+[\110100yyy]--[\110110yyy]
+
+[<instance>\110230yyy
+|2018/12/17,2/n]
+[no.180,!rev->rev]->[\110230yyy]
+
+[no.186,!rev]---[none.1]
+[no.180,!rev]--[none.2]
