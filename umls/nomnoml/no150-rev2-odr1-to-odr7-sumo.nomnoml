@@ -63,7 +63,9 @@
  [<instance>minor
  |none]
  [major]--[minor]
-|]
+|major(!?),major(?):2
+ minor:none:0@
+]
 [<instance>order(1to2)
 |avg=0.03
 |a6=(1,3->2,2)
@@ -81,7 +83,9 @@
  [<instance>minor
  |none]
  [major]--[minor]
-|]
+|major(!?),major(?):2
+ minor:none:0@
+]
 [<instance>order(1to3)
 |avg=0.055
 |a2=(3->2,1,2->1)
@@ -102,7 +106,10 @@
  |min2(x)
  |max(1-2)]
  [major]--[minor]
-|]
+|major(!?),major(?):2
+ minor(!?),minor(?):2
+]
+
 [<instance>order(1to4)
 |avg=0.07
 |a1=(3->2,1,2->1)
@@ -149,7 +156,7 @@
  minor(!?):1
 ]
 [<instance>order(1to6)
-|\110130yyy,order(1to2)
+|\110130yyy,order(1to2)>10%
 |avg=0.178
 |a3=(3->2,1,2->1)
 |a1=(2,1,1)
@@ -171,8 +178,8 @@
 ]
 
 [<instance>order(1to7)
-|\110130yyy,
- back,order(1to3)>10%
+|\110130yyy,back,
+  order(1to3)>10%
 |a6=(1,2->1,2->1)
 |a1=(2,1,1)
  a2=(2,1,1)
@@ -203,17 +210,46 @@
 [no.150,1vs2,>10%]--[order(1to7)]
 
 [<instance>order(1).sum(o)
-||]
+|a01=major(!?),b01=major(?)
+|(a01,b01,ab)
+|min=(1) + (1) = (2)
+ min2=(1) + (1) = (2)
+ max=(3) + (1) = (4)
+|!existed(old,new) is out of target.
+|goal=NG]
 [org.sum(o)]->[order(1).sum(o)]
 [order(1)]->[order(1).sum(o)]
 
 [<instance>order(1to2).sum(o)
-||]
+|a02=major(!?),b02=major(?)
+|(a02,b02,ab)
+|min=(1) + (1) = (2)
+ min2=(3) + (1) = (4)
+ max=(0) + (1) = (1)
+|!existed(old,new) is out of target.
+|goal=NG]
 [org.sum(o)]->[order(1to2).sum(o)]
 [order(1to2)]->[order(1to2).sum(o)]
 
 [<instance>order(1to3).sum(o)
-||]
+|a02=major(!?),b02=major(?)
+ c03=minor(!?),d03=minor(?)
+|(a02,b02,c03,d03)
+ (ab,ac,ad,bc,bd,cd)
+ (abc,abd,acd,bcd,abcd)
+|min=(12,7) + (1) = (13,8)
+ min2=(7,12) + (1) = (8,13)
+ max=(3,0) + (1) = (4,1)
+|goal.rule1)
+ 1)sel max(new)=13=min2
+ 2)sel same(old=8)=min2
+|goal.rule2)
+ 1)pair(old,new)=(13,8)(8,13)
+   is out of target.
+ 2)left=max is goal.
+|rule1)goal=min2,expected=max,NG
+ rule2)goal=max,expected=max,OK
+]
 [org.sum(o)]->[order(1to3).sum(o)]
 [order(1to3)]->[order(1to3).sum(o)]
 
