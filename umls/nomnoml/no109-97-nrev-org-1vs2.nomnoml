@@ -1,0 +1,111 @@
+#direction: right
+[<instance>no.109,97.org
+|\\110190yyy
+|2018/12/16,1/n
+|!Min,!rev(nrev)
+|
+ [<instance>min.raw
+ |a1=0.1580
+  a2=0.3059
+  a3=0.1110
+  a4=0.2051
+  a5=0.4215
+  a6=0.4022
+ ]
+ [<instance>min2.raw
+ |a1=0.1631
+  a2=0.3176
+  a3=0.0960
+  a4=0.1758
+  a5=0.2522
+  a6=0.2372
+ ]
+ [<instance>max.raw
+ |a1=0.2074
+  a2=0.4128
+  a3=0.1970
+  a4=0.3940
+  a5=0.1899
+  a6=0.1908
+ ]
+ [min.raw]--[min2.raw]
+ [min2.raw]--[max.raw]
+|
+ [<instance>min.raw]
+ [<instance>min2.raw]
+ [<instance>max.raw]
+ [<instance>order.init
+ |(min,min2,max)
+ |a1=(3,2,1)
+  a2=(3,2,1)
+  a3=(2,3,1)
+  a4=(2,3,1)
+ |a5=(1,2,3)
+  a6=(1,2,3)
+  ]
+ [min.raw]->[order.init]
+ [min2.raw]->[order.init]
+ [max.raw]->[order.init]
+]
+
+[<instance>no.109,97.1vs2
+|
+ [<instance>min.vs.min2
+ |a1=avg(0.032,0.031)=0.032
+  a2=avg(0.038,0.037)=0.038
+  a3=avg(0.135,0.156)=0.146
+  a4=avg(0.143,0.167)=0.155
+  a5=avg(0.402,0.671)=0.536
+  a6=avg(0.410,0.696)=0.553
+ ]
+ [<instance>min.vs.max
+ |a1=avg(0.313,0.238)=0.275
+  a2=avg(0.349,0.259)=0.304
+  a3=avg(0.775,0.437)=0.606
+  a4=avg(0.921,0.479)=0.700
+  a5=avg(0.549,1.220)=0.885
+  a6=avg(0.526,1.108)=0.817
+ ]
+ [<instance>min2.vs.max
+ |a1=avg(0.272,0.214)=0.243
+  a2=avg(0.300,0.231)=0.265
+  a3=avg(1.052,0.513)=0.782
+  a4=avg(1.241,0.554)=0.897
+  a5=avg(0.247,0.328)=0.288
+  a6=avg(0.196,0.243)=0.219
+ ]
+ [min.vs.min2]--[min.vs.max]
+ [min.vs.max]--[min2.vs.max]
+|
+ [<instance>min.vs.min2]
+ [<instance>min.vs.max]
+ [<instance>min2.vs.max]
+ [<instance>order.cell
+ |order(1-18)=avg(a?,1vs2),
+  sorted by avg.
+ |order(1)=0.032,(a1,min.vs.min2)
+  order(2)=0.038,(a2,min.vs.min2)
+ |?>10%(below)
+ |
+  order(3)=0.146,(a3,min.vs.min2)
+  order(4)=0.155,(a4,min.vs.min2)
+  order(5)=0.219,(a6,min2.vs.max)
+  order(6)=0.243,(a1,min2.vs.max)
+  order(7)=0.265,(a2,min2.vs.max)
+  order(8)=0.275,(a1,min.vs.max)
+  order(9)=0.288,(a5,min2.vs.max)
+  order(10)=0.304,(a2,min.vs.max)
+  order(11)=0.536,(a5,min.vs.min2)
+  order(12)=0.553,(a6,min.vs.min2)
+  order(13)=0.606,(a3,min.vs.max)
+  order(14)=0.700,(a4,min.vs.max)
+  order(15)=0.782,(a3,min2.vs.max)
+  order(16)=0.817,(a6,min.vs.max)
+  order(17)=0.885,(a5,min.vs.max)
+  order(18)=0.897,(a4,min2.vs.max)
+ ]
+ [min.vs.min2]->[order.cell]
+ [min.vs.max]->[order.cell]
+ [min2.vs.max]->[order.cell]
+]
+[no.109,97.org]--[no.109,97.1vs2]
