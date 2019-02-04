@@ -1,0 +1,198 @@
+[<instance>no.186
+|2019/02/04,
+|!Min2,!rev
+|!included-samePat
+|xy=0.1813,pat(!rev)=3
+ 2018/09/05,1/n]
+
+[<instance>order.cell
+|~10%(none)
+|>20%(below)
+|order(1)=0.286,(a1,min2.vs.max)
+|~30%(none)
+|>40%(below)
+|order(2)=0.411,(a2,min.vs.max)
+ order(3)=0.438,(a6,min2.vs.max)
+ order(4)=0.445,(a2,min2.vs.max)
+ order(5)=0.554,(a5,min.vs.max)
+ order(6)=0.558,(a5,min2.vs.max)
+ order(7)=0.781,(a1,min.vs.max)
+ order(8)=0.910,(a6,min.vs.max)
+ order(9)=0.931,(a2,min.vs.min2)
+ order(10)=0.997,(a3,min2.vs.max)
+ order(11)=1.056,(a4,min2.vs.max)
+ order(12)=1.175,(a1,min.vs.min2)
+ order(13)=1.273,(a5,min.vs.min2)
+ order(14)=1.354,(a4,min.vs.max)
+ order(15)=1.407,(a3,min.vs.max)
+ order(16)=1.585,(a6,min.vs.min2)
+ order(17)=3.707,(a3,min.vs.min2)
+ order(18)=3.748,(a4,min.vs.min2)
+]
+
+[<instance>org
+|order.init
+|a1=(3,1,2)
+ a2=(3,1,2)
+ a3=(3,1,2)
+ a4=(3,1,2)
+|a5=(3,1,2)
+ a6=(3,1,2)
+|
+ [<instance>major
+ |min(3-3)
+ |min2(1-1)
+ |max(2-2)]
+ [<instance>minor
+ |none]
+ [major]--[minor]
+|
+ major(!?=?):1
+ minor:none:0@
+]
+[no.186]->[org.dummy]
+[org.dummy]->[org]
+
+[no.186]--[order.dummy]
+[order.dummy]--[order.cell]
+
+[<instance>no.186,1vs2,<10%]
+[no.186]->[no.186,1vs2,<10%]
+
+[<instance>no.186,1vs2,>10%]
+[no.186]->[no.186,1vs2,>10%]
+
+[<instance>order(1)
+|avg=0.286
+|a1=(3->2,1,2->1)
+|a1=(2,1,1)
+ a2=(3,1,2)
+ a3=(3,1,2)
+ a4=(3,1,2)
+|a5=(3,1,2)
+ a6=(3,1,2)
+|
+ [<instance>major
+ |=org.major
+ |min(3-3)
+ |min2(1-1)
+ |max(2-2)]
+ [<instance>minor
+ |min(2-3)
+ |min2(x)
+ |max(1-2)]
+ [major]--[minor]
+|
+ major(!?=?):1
+ minor(!?),minor(?):2
+]
+[no.186,1vs2,>10%]--[order(1)]
+
+[<instance>order(2)
+|avg=0.411
+|a2=(3->2,1,2)
+|a1=(2,1,1)
+ a2=(2,1,2)
+ a3=(3,1,2)
+ a4=(3,1,2)
+|a5=(3,1,2)
+ a6=(3,1,2)
+|
+ [<instance>major
+ |min(2-3)
+  min(3-3)
+ |min2(1-1)
+ |max(2-2)]
+ [<instance>minor
+ |min(x)
+ |min2(x)
+ |max(1-2)]
+ [major]--[minor]
+|
+ major(!?),major(?):2
+ minor(!?),minor(?):2
+]
+[no.186,1vs2,>10%]--[order(2)]
+
+[<instance>org.sum(o)
+|a=major(!?=?)
+|(a)
+|min=(0,1)
+ min2=(1,0)
+ max=(0,0)
+|goal.rule1)
+ 1)sel max(new)=1=min
+ 2)sel same(old=min)=(min,max)=!min2
+ @)min(old)=0=(min,max)=!min2
+|goal.rule2)
+ 1)pair(old,new)={(0,1),(1,0)} is out of target.
+ 2)left=max is goal.
+|goal.rule3)
+ 1)pair(old,new)={(0,1),(1,0)} is out of target.
+ 2)left=max is {pair(old,new)=(0,0) is out of target}.
+ 3)goal=NG.
+|rule1)goal=!min2,expected=!min2,OK
+ rule2)goal=max,expected=!min2,NG
+ rule3)goal=NG
+]
+[org]--[org.sum(o)]
+
+[<instance>order(1).sum(o)
+|a=major(!?=?)
+ c1=minor(!?),d1=minor(?)
+|(a,c1,d1),(ac,ad,cd,acd)
+|min=(2,3)
+ min2=(4,3)
+ max=(2,1)
+|goal.rule)
+ 1)sel max(new)=3=(min,min2)=target
+ 2)sel min(old=target)=2=(min,max)=!min2
+ @)min(old)=2=(min,max)=!min2
+|goal=!min2,expected=!min2,OK
+]
+[order(1)]--[order(1).sum(o)]
+
+[<instance>order(2).sum(o)
+|a2=major(!?),b2=major(?)
+ c2=minor(!?),d2=minor(?)
+|(a2,b2,c2,d2)
+ (ab,ac,ad,bc,bd,cd)
+ (abc,abd,acd,bcd,abcd)
+|min=(6,8)
+ min2=(11,9)
+ max=(3,3)
+|goal.rule1)
+ 1)sel max(new)=9=min2
+ 2)sel same(old=min2)=min2
+ @)min(old)=max
+|goal.rule2)
+ 1)pair(old,new)=(3,3)=max is out of target.
+ 2)left=(min,min2)=target.
+ 3)sel max(new=target)=min2
+ 4)sel same(old=min2)=min2
+|rule1)goal=min2,expected=!min2,NG
+ rule2)goal=min2,expected=!min2,NG
+]
+[order(2)]--[order(2).sum(o)]
+
+[<note>org.sel.idea
+|1)if data < 10% existed, sum(o:org,o:<10%).
+|2)pair(old,new) is out of target.
+|3)if org is paired, sum(o:<10%).
+|4)!(old,new).vs.(old,new) is selected latter.
+]
+[org.sum(o)]--[org.sel.idea]
+
+[<note>order(1).sel.idea
+|1)not selected.???
+|2)as for count(major,minor),
+|3)!changed(count(major,minor))
+]
+[order(1).sum(o)]--[order(1).sel.idea]
+
+[<note>order(2).sel.idea
+|2)as for count(major,minor),
+|3)!changed(count(major,minor))
+|avg=0.411 > 40% is target???@@@
+]
+[order(2).sum(o)]--[order(2).sel.idea]
