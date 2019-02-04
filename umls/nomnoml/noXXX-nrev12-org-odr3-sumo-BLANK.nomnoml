@@ -1,0 +1,141 @@
+[<instance>no.180
+|2019/02/04,
+|!Min2,!rev
+|!included-samePat]
+
+[<instance>order.cell
+|]
+
+[<instance>org
+|order.init
+|a1=()
+ a2=()
+ a3=()
+ a4=()
+|a5=()
+ a6=()
+|
+ [<instance>major
+ |min()
+ |min2()
+ |max()]
+ [<instance>minor
+ |none]
+ [major]--[minor]
+|
+ major:???@@@
+ minor:???@@@
+]
+[no.180]->[org.dummy]
+[org.dummy]->[org]
+
+[no.180]--[order.dummy]
+[order.dummy]--[order.cell]
+
+[<instance>no.180,1vs2,<10%]
+[no.180]->[no.180,1vs2,<10%]
+
+[<instance>no.180,1vs2,>10%]
+[no.180]->[no.180,1vs2,>10%]
+
+[<instance>order(1)
+|avg=
+
+|
+ [<instance>major
+ |min()
+ |min2()
+ |max()]
+ [<instance>minor
+ |min()
+ |min2()
+ |max()]
+ [major]--[minor]
+|
+ major:???@@@
+ minor:???@@@
+]
+[no.180,1vs2,<10%]--[order(1)]
+
+[<instance>order(2)
+|avg=
+
+|
+ [<instance>major
+ |min()
+ |min2()
+ |max()]
+ [<instance>minor
+ |min()
+ |min2()
+ |max()]
+ [major]--[minor]
+|
+ major:???@@@
+ minor:???@@@
+]
+[no.180,1vs2,<10%]--[order(2)]
+
+[<instance>order(3)
+|avg=
+
+|
+ [<instance>major
+ |min()
+ |min2()
+ |max()]
+ [<instance>minor
+ |min()
+ |min2()
+ |max()]
+ [major]--[minor]
+|
+ major:???@@@
+ minor:???@@@
+]
+[no.180,1vs2,>10%]--[order(3)]
+
+[<instance>org.sum(o)
+|]
+[org]--[org.sum(o)]
+
+[<instance>order(1).sum(o)
+|]
+[order(1)]--[order(1).sum(o)]
+[org.sum(o)]->[order(1).sum(o)]
+
+[<instance>order(2).sum(o)
+|]
+[order(2)]--[order(2).sum(o)]
+[org.sum(o)]->[order(2).sum(o)]
+
+[<instance>order(3).sum(o)
+|]
+[order(3)]--[order(3).sum(o)]
+
+[<note>org.sel.idea
+|1)if data < 10% existed, sum(o:org,o:<10%).
+|2)pair(old,new) is out of target.
+|3)if org is paired, sum(o:<10%).
+|4)!(old,new).vs.(old,new) is selected latter.
+]
+[org.sum(o)]--[org.sel.idea]
+
+[<note>order(1).sel.idea
+|1)not selected.???
+|2)as for count(major,minor),
+|3)!changed(count(major,minor))
+]
+[order(1).sum(o)]--[order(1).sel.idea]
+
+[<note>order(2).sel.idea
+|2)as for count(major,minor),
+|3)!changed(count(major,minor))
+]
+[order(2).sum(o)]--[order(2).sel.idea]
+
+[<note>order(3).sel.idea
+|2)as for count(major,minor),
+|3)!changed(count(major,minor))
+]
+[order(3).sum(o)]--[order(3).sel.idea]
