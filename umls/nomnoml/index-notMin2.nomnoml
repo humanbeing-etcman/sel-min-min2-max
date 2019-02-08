@@ -1,6 +1,3 @@
-
-
-#direction: right
 [<instance>top]
 [<note>note1
 |To check rule of (rev) by (!rev)'s one.
@@ -12,77 +9,210 @@
 
 [<instance>no.151
 |!Min2,(!rev,!rev->rev)
-|!rev:DONE
- !rev->rev:DONE
-|out DB
- !included-samePat=existed
- included-samePat=!existed@
+ out DB
+ included-samePat=!existed
+|
+ [<instance>!rev
+ |!included-samePat=existed
+ |\110080yyy,bottom,back?
+  2018/12/10,4/n
+ |nomnoml:2019/02/04
+ ]
+|
+ [<instance>!rev->rev
+ |!included-samePat=existed
+ |\110080yyy,top
+  2018/12/10,4/n
+ | \110090yyy
+  2018/12/10,5/n
+ |\110100yyy
+  2018/12/11,6/n
+ |\110110yyy
+  2018/12/12,7/n
+ |nomnoml:2019/02/06
+ ]
 ]
-[<instance>no.151,!rev
-|!included-samePat]
-[<instance>no.151,!rev->rev
-|!included-samePat]
 [!min2]->[no.151]
-[no.151]->[no.151,!rev]
-[no.151]->[no.151,!rev->rev]
 
 [<instance>no.180
 |!Min2,(!rev,!rev->rev)
-|!rev:TODO)@@@
- !rev->rev:DONE
 |out DB
- !included-samePat=existed
- included-samePat=!existed@
+ included-samePat=!existed
+|
+ [<instance>!rev
+ |!included-samePat=existed
+ |memo:done(date?)
+ |nomnoml:2019/02/04
+ ]
+|
+ [<instance>!rev->rev
+ |!included-samePat=existed
+ |\110230yyy
+  2018/12/17,2/n
+ |nomnoml:2019/01/26
+ ]
 ]
-[<instance>no.180,!rev
-|!include-samePat]
-[<instance>no.180,!rev->rev
-|!include-samePat]
 [!min2]->[no.180]
-[no.180]->[no.180,!rev]
-[no.180]->[no.180,!rev->rev]
 
 [<instance>no.186
 |!Min2,(!rev,!rev->rev)
-|!rev:TODO)@@@
- !rev->rev:DONE
-|out DB
- !included-samePat=existed
- included-samePat=!existed@
+ out DB
+ included-samePat=!existed
+|
+ [<instance>!rev
+ |!included-samePat=existed
+ |memo:done(date?)
+ |nomnoml:2019/02/04
+ ]
+|
+ [<instance>!rev->rev
+ |!included-samePat=existed
+ |\110160yyy
+  2018/12/15,1/n
+ |nomnoml:done(date?)
+ ]
 ]
-[<instance>no.186,!rev
-|!included-samePat]
-[<instance>no.186,!rev->rev
-|!included-samePat]
 [!min2]->[no.186]
-[no.186]->[no.186,!rev]
-[no.186]->[no.186,!rev->rev]
 
-[<instance>\110080yyy,top
-|2018/12/10,4/n]
-[<instance>\110080yyy,bottom,back?
-|2018/12/10,4/n]
-[no.151,!rev->rev]->[\110080yyy,top]
-[no.151,!rev]->[\110080yyy,bottom,back?]
+[<instance>no.151,nrev1.vs.nrev2
+|sel(expected)=nrev1
+ (nrev(1)<10%, nrev2(1)>10%)
+|
+ [<instance>data < 10%
+ |count=(7 > 0)
+ |sel at this point:nrev1@(maybe)***
+ ]
+ [<instance>data < 20%
+ |count=(13 > 4)
+ |unique(a?)=(5 > 4)
+ |avg=(0.0957 < 0.15)
+ |sel count.big(=nrev1)
+  sel unique(a?).big(=nrev1)
+  sel.avg.small(=nrev1)*
+ ]
+ [<instance>data < 30%
+ |count=(14 > 4)
+ |unique(a?)=(6 > 4)
+ |avg=(0.1040 < 0.15)
+ |sel count.big(=nrev1)
+  sel unique(a?).big(=nrev1)
+  sel.avg.small(=nrev1)*
+ ]
+|
+ [<instance>org
+ |count(major,minor)=(2:2-0 > 1:1-0)
+ |(old,new)=(!!.vs.!)
+ |sel count.big(=nrev1)?@
+ ]
+|
+ [<instance>order
+ |a2:count(major,'-',minor)
+ |
+  [<instance>!rev
+  |(org,2:2-0,NG,--,--)
+  |(1,4:2-2,NG,1,skip:a1)<10%
+   (2,3:1-2,NG,2,(!target):a2)<10%
+   (3,3:1-2,NG,3,(!target):a2)<10%
+   (4,4:2-2,OK?**,4,(target,end):a2)<10%
+   (5,4:2-2,NG,4,---)<10%
+  ]
+  [<instance>!rev->rev
+  |(org,1:1-0,NG,--,--)
+  |(1,3:1-2,NG,1,skip:a1)>10%,<20%@
+   (2,2:2-0,OK,2,(target):a2)>10%,<20%@
+   (3,3:2-1,OK,3,(target,end):a2)>10%,<20%@
+   (4,2:2-0,NG,4,--)>20%,<30%@
+   (5,3:2-1,NG,4,--)>30%,<40%@
+  ]
+ |order(OK)=(4 > 3)
+  order(OK:pos<10%)=(4/7.vs.none),@sel=nrev1
+ ]
+]
+[no.151]--[no.151,nrev1.vs.nrev2]
 
-[<instance>\110090yyy
-|2018/12/10,5/n]
-[\110080yyy,top]--[\110090yyy]
+[<instance>no.180,nrev1.vs.nrev2
+|sel(expected)=nrev1
+ (nrev1(1)<10%,nrev2(1)>10%)*
+|
+ [<instance>data < 10%
+ |count=(2 > 0)
+ ]
+ [<instance>data < 20%
+ |count=(4 > 2)
+ |unique(a?)=(4 > 2)
+ |avg=(0.1192 < 0.122)
+ |sel count.big(=nrev1)
+  sel unique(a?).big(=nrev1)
+  sel avg.small(=nrev1)*
+ ]
+|
+ [<instance>org
+ |count(major,minor)=(2:2-0 ~ 2:2-0)
+ |(old,new)=(!!.vs.!!)
+ |sel count=same?
+ ]
+|
+ [<instance>order
+ |
+  [<instance>!rev
+  |(org,2:2-0,NG,--,--)
+  |(1,3:2-1,NG,1,skip:a2)<10%
+   (2,2:2-0,NG,2,(!target):a2)<10%
+   (3,3:1-2,OK,3,(target,end))>10%@
+   (4,1:1-0,?,4,--)>10%@
+  ]
+  [<instance>!rev->rev
+  |(org,2:2-0,NG,--,--)
+  |(1,3:1-2,OK,1,skip:a2)>10%@
+   (2,1:1-0,NG,(!target,end):a2)>10%
+  ]
+ |sel nrev1(=order(3)).
+ ]
+]
+[no.180]--[no.180,nrev1.vs.nrev2]
 
-[<instance>\110160yyy
-|2018/12/15,1/n]
-[no.186,!rev->rev]->[\110160yyy]
+[<instance>no.186,nrev1.vs.nrev2
+|sel(expected)=nrev2
+ (nrev(1)<20%>30%, nrev2(1)>10%<20%)
+ @both(nrev1,nrev2)!<10%.
+|
+ [<instance>data < 10%
+ |count=(0 ~ 0)]
+ [<instance>data < 20%
+ |count=(0 < 3)
+ ]
+ [<instance>data < 30%
+ |count=(1 < 4)
+ |unique(a?)=(1 < 4)
+ |avg=(0.286 > 0.1777)
+ |sel count.small(=nrev1)
+  sel unique(a?).small(=nrev1)
+  sel avg.big(=nrev1)*
+ ]
+|
+ [<instance>org
+ |count(major,minor)=(2:2-0 ~ 2:2-0)
+ |(old,new)=(!!.vs.!!)
+ |sel count=same?
+ ]
+|
+ [<instance>order
+ |
+  [<instance>!rev
+  |(org,1:1-0,OK?,--,--)
+  |(1,3:1-2,OK,1,skip:a2)>20%@
+   (2,4:2-2,NG,2,(!target>40%,end):a2)>40%@
+  ]
+  [<instance>!rev->rev
+  |(org,1:1-0,OK,--,--)
+  |(1,3:1-2,OK,1,skip:a2)>10%@
+   (2,4:2-2,NG,2,(target,end):a2)>10%@
+   (3,2:2-0,NG,3,--)>10%@
+   (4,2:2-0,NG,4,--)>20%@
+   (5,3:1-2,NG,5,--)>30%@
+  ]
+ |in nrev1)sel order(OK)=none, so sel org.
+ ]
 
-[<instance>\110100yyy
-|2018/12/11,6/n]
-[<instance>\110110yyy
-|2018/12/12,7/n]
-[no.151,!rev->rev]->[\110100yyy]
-[\110100yyy]--[\110110yyy]
-
-[<instance>\110230yyy
-|2018/12/17,2/n]
-[no.180,!rev->rev]->[\110230yyy]
-
-[no.186,!rev]---[none.1]
-[no.180,!rev]--[none.2]
+]
+[no.186]--[no.186,nrev1.vs.nrev2]
