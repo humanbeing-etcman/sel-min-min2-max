@@ -1,5 +1,3 @@
-#direction: right
-
 [<instance>top]
 [<note>note1
 |To check rule of (rev) by (!rev)'s one.
@@ -9,80 +7,208 @@
 [top]--[note1]
 [top]-[!min]
 
+[<instance>!included-samePat
+|no.109,97
+|no.159
+|no.187]
+[<instance> included-samePat
+|no.109,97 (TODO)@@@
+|no.187 (TODO)@@@]
+[!min]->[!included-samePat]
+[!min]->[included-samePat]
+
 [<instance>no.109,97
 |!Min,(!rev,!rev->rev)
-|!rev:DONE
- !rev->rev:DONE
-|in DB
- !included-samePat=existed
+ in DB
  included-samePat=existed
+|
+ [<instance>!rev
+ |!included-samePat=existed
+ |\110190yyy,bottom
+  2018/12/16,1/n
+ |nomnoml:2019/01/23]
+|
+ [<instance>!rev->rev
+ |!included-samePat=existed
+ |\110170yyy
+  2018/12/15,2/n
+ |\110190yyy,top
+  2018/12/16,1/n
+ |nomnoml:2019/01/23]
 ]
-[<instance>no.109,97,!rev->rev,!included-samePat]
-[<instance>no.109,97,!rev,!included-samePat]
-[no.109,97]->[no.109,97,!rev->rev,!included-samePat]
-[no.109,97]->[no.109,97,!rev,!included-samePat]
-
-[<instance>no.109,97,!rev->rev,included-samePat
-|none.TODO)@@@]
-[<instance>no.109,97,!rev,included-samePat
-|none.TODO)@@@]
-[no.109,97]->[no.109,97,!rev->rev,included-samePat]
-[no.109,97]->[no.109,97,!rev,included-samePat]
-
 
 [<instance>no.159
 |!Min,(!rev,!rev->rev)
-|!rev:
- !rev->rev:
-|out of DB
- !included-samePat=existed
- included-samePat=!existed@
+ out of DB
+ included-samePat=!existed
+|
+ [<instance>!rev
+ |!included-samePat=existed
+ |\110070yyy,bottom
+  2018/12/10,3/n
+ |nomnoml:2019/02/07]
+|
+ [<instance>!rev->rev
+ |!included-samePat=existed
+ |\110070yyy,top
+  2018/12/10,3/n
+ |nomnoml:2019/02/08]
 ]
-[<instance>no.159,!rev->rev
-|!included-samePat]
-[<instance>no.159,!rev
-|!included-samePat]
-[no.159]->[no.159,!rev->rev]
-[no.159]->[no.159,!rev]
 
 [<instance>no.187
 |!Min,(!rev,!rev->rev)
-|!rev:
- !rev->rev:
-|out of DB
- !included-samePat=existed
- included-samePat=!existed@
+ out of DB
+ included-samePat=existed
+|
+ [<instance>!rev
+ |!included-samePat=existed
+ |memo:done(date?)
+ |nomnoml:2019/02/03]
+|
+ [<instance>!rev->rev
+ |!included-samePat=existed
+ |\110220yyy
+  2018/12/17,1/n
+ |nomnoml:2019/02/02]
 ]
-[<instance>no.187,!rev->rev
-|!included-samePat]
-[<instance>no.187,!rev
-|!included-samePat
-|none.TODO)@@@]
-[no.187]->[no.187,!rev->rev]
-[no.187]->[no.187,!rev]
+[!included-samePat]--[no.109,97]
+[!included-samePat]--[no.159]
+[!included-samePat]--[no.187]
 
-[!min]-[no.109,97]
-[!min]-[no.159]
-[!min]-[no.187]
+[<instance>no.109,97,nrev1.vs.nrev2
+|sel(expected)=nrev1
+|
+ [<instance>date < 10%
+ |count=(2 ~ 2)
+ |unique(a?)=(2 ~ 2)
+ |avg=(0.035 < 0.04)
+ |sel avg.small(=nrev1)*
+ ]
+|
+ [<instance>org
+ |count(major,minor)=(2:2-0 < 4:2-2)
+ |(old,new)=(!!.vs.!!)
+ |sel count.small(=nrev1)?@
+ ]
+|
+ [<instance>order
+ |
+ [<instance>!rev
+ |(org,2:2-0,OK,--,target)
+ |(1,3:2-1,NG,1,skip)<10%
+  (2,2:2-0,NG,2,(!target,end))<10%
+  (3,3:1-2,NG,3,--)>10%@
+ |org=pair(old,new)(=target, if all orders gone)
+  order(1)=pair(=skip)
+  order(2)=!pair@(=!target)
+  order(3)=pair
+ ]
+ [<instance>!rev->rev
+ |(org,4:2-2,NG,--,end:a1)
+ |(1,3:2-1,NG,1,(skip,end=!reached))<10%
+  (2,2:2-0,NG,2,--)<10%
+  (3,3:1-2,NG,3,--)>10%@
+  (4,1:1-0,NG,4,--)>10%@
+ |org=pair(old,new)(=target, if all orders gone)
+  order(1)=!pair@(=!target)(=skip)
+  order(2)=!pair@(=!target)
+  order(3)=pair
+  order(4)=!pair@(=!target)
+ ]
+ |sel nrev1:org.
+  (if data < 10% existed, sel avg,small(=nrev1))
+ ]
+]
+[no.109,97]--[no.109,97,nrev1.vs.nrev2]
 
-[<instance>\110170yyy
-|2018/12/15,2/n]
-[<instance>\110190yyy,top
-|2018/12/16,1/n]
-[no.109,97,!rev->rev,!included-samePat]->[\110170yyy]
-[no.109,97,!rev->rev,!included-samePat]->[\110190yyy,top]
+[<instance>no.159,nrev1.vs.nrev2
+|sel(expected)=nrev1
+|
+ [<instance>date < 10%
+ |count=(2 < 4)
+ |unique(a?)=(2 < 4)
+ |avg=(0.009 < 0.0457)
+ |sel avg.small(=nrev1)*]
+|
+ [<instance>org
+ |count=(2:2-0 > 1:1-0)
+ |(old,new)=(!vs.!)
+ |sel count.big(=nrev1)?@
+ ]
+|
+ [<instance>order
+ |
+ [<instance>!rev
+ |(org,2:2-0,NG,--,--)
+ |(1,3:2-1,NG,1,skip)<10%
+  (2,2:2-0,OK,2,(target,end))<10%
+  (3,2:2-0,NG,3,--)>10%@
+ |org=!pair@(=!target)
+  order(1)=pair(=skip)
+  order(2)=pair
+  order(3)=!pair@(=!target)
+ ]
+ [<instance>!rev->rev
+ |(org,1:1-0,NG,--,--)
+ |(1,2:2-0,NG,1,skip)<10%
+  (2,2:2-0,NG,2,target)<10%
+  (3,4:2-2,NG,3,(target,end))<10%
+  (4,2:2-0,NG,4,--)<10%
+  (5,3:2-1,NG,5,--)>10%@
+ |org=!pair@(=!target)
+  order(1)=!pair@(=!target)(=skip)
+  order(2)=!pair@(=!target)
+  order(3)=pair
+  order(4)=!pair@(=!target)
+  order(5)=pair
+ ]
+ |sel nrev1:order(2).
+  (if data < 10% existed, sel avg,small(=nrev1))
+ ]
+]
+[no.159]--[no.159,nrev1.vs.nrev2]
 
-[<instance>\110190yyy,bottom
-|2018/12/16,1/n]
-[no.109,97,!rev,!included-samePat]->[\110190yyy,bottom]
-
-[<instance>\110070yyy,top
-|2018/12/10,3/n]
-[<instance>\110070yyy,bottom
-|2018/12/10,3/n]
-[no.159,!rev->rev]->[\110070yyy,top]
-[no.159,!rev]->[\110070yyy,bottom]
-
-[<instance>\110220yyy
-|2018/12/17,1/n]
-[no.187,!rev->rev]->[\110220yyy]
+[<instance>no.187,nrev1.vs.nrev2
+|sel(expected)=nrev1
+|
+ [<instance>date < 10%
+ |count=(2 < 3)
+ |unique(a?)=(2 < 3)
+ |avg=(0.04 < 0.074)
+ |sel avg.small(=nrev1)*]
+|
+ [<instance>org
+ |count(major,minor)=(2:2-0 < 3:2-1)
+ |(old,new)=(!.vs.!!)
+ |sel count.small(=nrev1)?@
+ ]
+|
+ [<instance>order
+ |
+ [<instance>!rev
+ |(org,2:2-0,NG,--,--)
+ |(1,3:2-1,NG,1,skip)<10%
+  (2,2:2-0,OK,2,(target,end))<10%
+  (3,3:2-1,NG,3,--)>10%@
+  |org=!pair@(=!target)
+   order(1)=pair(=skip)
+   order(2)=pair
+   order(3)=pair
+  ]
+ [<instance>!rev->rev
+ |(org,3:2-1,NG,--,--)
+ |(1,3:2-1,NG,1,skip)<10%
+  (2,3:2-1,NG,2,!target)<10%
+  (3,4:2-2,NG,3,(target,end))<10%
+  (4,3:2-1,NG,4,--)>10%@
+ |org=pair(old,new)(=target, if all orders gone)
+  order(1)=pair(=skip)
+  order(2)=pair
+  order(3)=pair
+  order(4)=pair
+ ]
+ |sel nrev1:order(2).
+  (if data < 10% existed, sel avg,small(=nrev1))
+ ]
+]
+[no.187]--[no.187,nrev1.vs.nrev2]
