@@ -96,19 +96,26 @@
  [<instance>!rev
  |(org,2:2-0,OK,--,target)
  |(1,3:2-1,NG,1,skip)<10%
-  (2,2:2-0,NG,2,(!target,end))<10%
+  (2,2:2-0,NG,2,(target?,end))<10%
   (3,3:1-2,NG,3,--)>10%@
+ |major(org,order(2))=(2~2):target
+  major(org,order(3))=(2~2):target
+  (border<10%:end)
+  major(org,order(3))=(2>1):
  |org=pair(old,new)(=target, if all orders gone)
   order(1)=pair(=skip)
   order(2)=!pair@(=!target)
   order(3)=pair
  ]
  [<instance>!rev->rev
- |(org,4:2-2,NG,--,end:a1)
+ |(org,4:2-2,NG,--,end(a2=4))
  |(1,3:2-1,NG,1,(skip,end=!reached))<10%
   (2,2:2-0,NG,2,--)<10%
   (3,3:1-2,NG,3,--)>10%@
   (4,1:1-0,NG,4,--)>10%@
+ |major(org.order(2))=(2~2):target,
+  (border<10%:end)
+  major(org.order(3))=(2>1):
  |org=pair(old,new)(=target, if all orders gone)
   order(1)=!pair@(=!target)(=skip)
   order(2)=!pair@(=!target)
@@ -141,8 +148,11 @@
  [<instance>!rev
  |(org,2:2-0,NG,--,--)
  |(1,3:2-1,NG,1,skip)<10%
-  (2,2:2-0,OK,2,(target,end))<10%
+  (2,2:2-0,OK,2,(target?,end))<10%
   (3,2:2-0,NG,3,--)>10%@
+ |major(org.order(2)=(2~2):target,
+ (border<10%:end)
+  major(org.order(3)=(2~2):target
  |org=!pair@(=!target)
   order(1)=pair(=skip)
   order(2)=pair
@@ -151,10 +161,15 @@
  [<instance>!rev->rev
  |(org,1:1-0,NG,--,--)
  |(1,2:2-0,NG,1,skip)<10%
-  (2,2:2-0,NG,2,target)<10%
-  (3,4:2-2,NG,3,(target,end))<10%
+  (2,2:2-0,NG,2,target?)<10%
+  (3,4:2-2,NG,3,(target?,end(a2=4)))<10%
   (4,2:2-0,NG,4,--)<10%
   (5,3:2-1,NG,5,--)>10%@
+ |major(org.order(2))=(1<2):target
+  major(org.order(3))=(1<2):target
+  major(org.order(4))=(1<2):target,
+  (border<10%:end)
+  major(org.order(5))=(1<2):target,
  |org=!pair@(=!target)
   order(1)=!pair@(=!target)(=skip)
   order(2)=!pair@(=!target)
@@ -188,8 +203,11 @@
  [<instance>!rev
  |(org,2:2-0,NG,--,--)
  |(1,3:2-1,NG,1,skip)<10%
-  (2,2:2-0,OK,2,(target,end))<10%
+  (2,2:2-0,OK,2,(target?,end))<10%
   (3,3:2-1,NG,3,--)>10%@
+  |major(org,oder(2))=(2~2):target,
+  (border<10%:end)
+   major(org,oder(3))=(2~2):target
   |org=!pair@(=!target)
    order(1)=pair(=skip)
    order(2)=pair
@@ -198,9 +216,13 @@
  [<instance>!rev->rev
  |(org,3:2-1,NG,--,--)
  |(1,3:2-1,NG,1,skip)<10%
-  (2,3:2-1,NG,2,!target)<10%
-  (3,4:2-2,NG,3,(target,end))<10%
+  (2,3:2-1,NG,2,target?)<10%
+  (3,4:2-2,NG,3,(target?,end(a2=4)))<10%
   (4,3:2-1,NG,4,--)>10%@
+ |major(org,order(2))=(2~2):target
+  major(org,order(3))=(2~2):target,
+  (border<10%:end)
+  major(org,order(4))=(2~2):target,
  |org=pair(old,new)(=target, if all orders gone)
   order(1)=pair(=skip)
   order(2)=pair
