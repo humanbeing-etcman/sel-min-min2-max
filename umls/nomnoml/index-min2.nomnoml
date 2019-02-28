@@ -1,49 +1,196 @@
-#direction: right
 [<instance>top]
 [<instance>min2]
-
 [<note>note1
 |To check rule of (rev) by (!rev)'s one.
 |DB(1-146,170)]
 
-[<instance>no.50|Min2,(!rev,!rev->rev)
-|!rev->rev:DONE;!rev:TODO@@@
-|in DB;!included-samePat=existed;included-samePat=existed]
-[<instance>no.50,Min2,!rev->rev,!included-samePat]
-[<instance>\110150yyy|2018/12/14,1/n]
-[<instance>no.50,Min2,!rev->rev,included-samePat]
-[<instance>no.50(none)|included-samePat]
+[<instance>!included-samePat
+|no.50
+|no.118
+|no.173
+]
 
-[<instance>no.118|Min2,(!rev,!rev->rev)
-|!rev->rev:DONE;!rev:TODO@@@
-|in DB;!included-samePat=existed;included-samePat=existed]
-[<instance>no.118,Min2,!rev->rev,!included-samePat]
-[<instance>\110180yyy|2018/12/16,1/n]
-[<instance>no.118,Min2,!rev->rev,included-samePat]
-[<instance>no.118(none)|included-samePat]
+[<instance>included-samePat
+|no.50 (TODO)@@@
+|no.118 (TODO)@@@
+]
 
-[<instance>no.173|Min2,(!rev,!rev->rev)
-|!rev->rev:DONE;!rev:TODO@@@
-|out of DB;!included-samePat=existed;included-samePat=!existed@]
-[<instance>no.173,Min2,!rev->rev,!included-samePat]
-[<instance>\110060yyy|2018/12/10,2/n]
+[<instance>no.50
+|Min2,(!rev,!rev->rev)
+ in DB
+ included-samePat=existed
+|
+ [<instance>!rev
+ |!included-samePat=existed
+ |memos:date?(2019/02/xx)
+ |nomnoml:2019/02/26
+ ]
+|
+ [<instance>!rev->rev
+ |!included-samePat=existed
+ |\110150yyy
+  2018/12/14,1/n
+ |nomnoml:2019/01/24
+ ]
+]
+
+[<instance>no.118
+|Min2,(!rev,!rev->rev)
+ in DB
+ included-samePat=existed
+|
+ [<instance>!rev
+ |!included-samePat=existed
+ |memos:date?(2019/02/xx)
+ |nomnoml:2019/02/20
+ ]
+|
+ [<instance>!rev->rev
+ |!included-samePat=existed
+ |\110180yyy
+  2018/12/16,1/n
+ |nomnoml:2019/02/18
+ ]
+]
+
+[<instance>no.173
+|Min2,(!rev,!rev->rev)
+ out of DB
+ includedamePat=!existed
+|
+ [<instance>!rev
+ |!included-samePat=existed
+ |memos:date?(2019/02/xx)
+ |nomnoml:2019/02/20
+ ]
+|
+ [<instance>!rev->rev
+ |!included-samePat=existed
+ |\110060yyy
+  2018/12/10,2/n
+ |nomnoml:2019/02/10
+ ]
+]
 
 [top]--[note1]
 
 [top]-[min2]
-[min2]-[no.50]
-[min2]-[no.118]
-[min2]-[no.173]
+[min2]->[!included-samePat]
+[min2]->[included-samePat]
+[!included-samePat]-[no.50]
+[!included-samePat]-[no.118]
+[!included-samePat]-[no.173]
 
-[no.50]->[no.50,Min2,!rev->rev,!included-samePat]
-[no.50,Min2,!rev->rev,!included-samePat]->[\110150yyy]
-[no.50]->[no.50,Min2,!rev->rev,included-samePat]
-[no.50,Min2,!rev->rev,included-samePat]--[no.50(none)]
+[<instance>no.50,nrev1.vs.nrev2
+|sel(expected)=
+|
+ [<instance>data < 10%
+ |count=
+ |unique(a?)=
+ |avg=(
+ |sel
+ ]
+|
+ [<instance>org
+ |count(major,minor)=
+ |(old,new)=
+ |sel count.
+ ]
+|
+ [<instance>order
+ |
+  [<instance>!rev
+  |(org,
+  |(1,
+   (2,
+  |major(org,
+  |org=
+  ]
 
-[no.118]->[no.118,Min2,!rev->rev,!included-samePat]
-[no.118,Min2,!rev->rev,!included-samePat]->[\110180yyy]
-[no.118]->[no.118,Min2,!rev->rev,included-samePat]
-[no.118,Min2,!rev->rev,included-samePat]--[no.118(none)]
+  [<instance>!rev->rev
+  |(org,
+  |(1,
+   (2,
+  |major(org,
+  |org=
+  ]
+ |aaa
+ ]
+]
+[no.50]--[no.50,nrev1.vs.nrev2]
 
-[no.173]->[no.173,Min2,!rev->rev,!included-samePat]
-[no.173,Min2,!rev->rev,!included-samePat]->[\110060yyy]
+[<instance>no.118,nrev1.vs.nrev2
+|sel(expected)=
+|
+ [<instance>data < 10%
+ |count=
+ |unique(a?)=
+ |avg=(
+ |sel
+ ]
+|
+ [<instance>org
+ |count(major,minor)=
+ |(old,new)=
+ |sel count.
+ ]
+|
+ [<instance>order
+ |
+  [<instance>!rev
+  |(org,
+  |(1,
+   (2,
+  |major(org,
+  |org=
+  ]
+
+  [<instance>!rev->rev
+  |(org,
+  |(1,
+   (2,
+  |major(org,
+  |org=
+  ]
+ |aaa
+ ]
+]
+[no.118]--[no.118,nrev1.vs.nrev2]
+
+[<instance>no.173,nrev1.vs.nrev2
+|sel(expected)=
+|
+ [<instance>data < 10%
+ |count=
+ |unique(a?)=
+ |avg=(
+ |sel
+ ]
+|
+ [<instance>org
+ |count(major,minor)=
+ |(old,new)=
+ |sel count.
+ ]
+|
+ [<instance>order
+ |
+  [<instance>!rev
+  |(org,
+  |(1,
+   (2,
+  |major(org,
+  |org=
+  ]
+
+  [<instance>!rev->rev
+  |(org,
+  |(1,
+   (2,
+  |major(org,
+  |org=
+  ]
+ |aaa
+ ]
+]
+[no.173]--[no.173,nrev1.vs.nrev2]
