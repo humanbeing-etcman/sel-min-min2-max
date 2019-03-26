@@ -119,11 +119,11 @@
    major(org,order(4))=(2~2):target
    major(org,order(5))=(2~2):target
   |org=!pair(=!target)@
-   order(1)=pair(=skip)
-   order(2)=pair
+   order(1)=pair,left=3,(=skip)
+   order(2)=pair,left=3
    order(3)=!pair(=!target)@
    order(4)=!pair(=!target)@
-   order(5)=pair
+   order(5)=pair,left=1(same*2)
   ]
 
   [<instance>!rev->rev
@@ -145,11 +145,11 @@
   |org=!pair(=!target)@
    order(1)=!pair(=skip)
    order(2)=!pair(=!target)@
-   order(3)=pair
+   order(3)=pair,left=1(pair)
    order(4)=!pair(=!target)@
-   order(5)=pair
-   order(6)=pair
-   order(7)=pair
+   order(5)=pair,left=1(same*2)
+   order(6)=pair,left=1(same*2)
+   order(7)=pair,left=1(same*2)
   ]
  |sel nrev2:order(3).
   (if data < 10% existed, sel avg.small(=nrev2))
@@ -208,10 +208,10 @@
   |major(org,order(2))=(2~2):target
    major(org,order(3))=(2~2):target
    major(org,order(4))=(2~2):target
-  |org=pair(=target, if all orders gone)
-   order(1)=pair(=skip)
-   order(2)=pair
-   order(3)=pair
+  |org=pair,left=1(same*2),(=target, if all orders gone)
+   order(1)=pair,left=3,(=skip)
+   order(2)=pair,left=3
+   order(3)=pair,left=3
    order(4)=!pair(=!target)@
   ]
 
@@ -223,9 +223,9 @@
    (4,?,?,2,?)>30%@,<40%@
   |major(org,order(2))=(2~2):target
    major(org,order(3))=(2??@@@
-  |org=pair(=target, if all orders gone)
-   order(1)=pair(=skip)
-   order(2)=pair
+  |org=pair,left=1(same*2),(=target, if all orders gone)
+   order(1)=pair,left=2(same*1),(=skip)
+   order(2)=pair,left=1(same*2)
   ]
  |sel nrev2:order(2).@(=nrev2:org)
   (if data < 10% !existed, proceed to range of both (rev1,rev2) existed < 40%,
@@ -272,10 +272,10 @@
    (border<10%:end)
    major(org,order(4))=(2~2):target
   |org=!pair(old,new)(=!target)@
-   order(1)=pair(=skip)
-   order(2)=pair
-   order(3)=pair
-   order(4)=pair
+   order(1)=pair,left=3,(=skip)
+   order(2)=pair,left=3
+   order(3)=pair,left=0(pair,same)
+   order(4)=pair,left=3
   ]
 
   [<instance>!rev->rev
@@ -289,11 +289,11 @@
    major(org.order(3))=(1<2):target
    major(org.order(4))=(1<2):target,
    (border<10%:end)
-  |org=pair(=target, if all orders gone)
-   order(1)=pair(=skip)
+  |org=pair,left=2(same*1),(=target, if all orders gone)
+   order(1)=pair,left=2(same*1),(=skip)
    order(2)=!pair(=!target)@
-   order(3)=pair
-   order(4)=pair
+   order(3)=pair,left=1(same*2)
+   order(4)=pair,left=1(same*2)
   ]
  |sel nrev2:order(3).
   (if data < 10% existed, sel avg.small(=nrev2))
